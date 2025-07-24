@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+

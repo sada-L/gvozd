@@ -1,0 +1,24 @@
+[package]
+name = "api"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "api"
+path = "src/main.rs"
+
+[dependencies]
+actix-web.workspace = true
+actix-cors.workspace = true
+sqlx.workspace = true
+tokio.workspace = true
+dotenv.workspace = true
+log.workspace = true
+env_logger.workspace = true
+thiserror.workspace = true
+
+infrastructure = {path = "../../crates/infrastructure/"}
+presentation = {path = "../../crates/presentation/"}
+application = { path = "../../crates/application/"}
+domain = { path = "../../crates/domain/" }
+

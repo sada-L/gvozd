@@ -1,0 +1,21 @@
+[package]
+name = "infrastructure"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+async-trait.workspace = true
+serde.workspace = true
+sqlx.workspace = true
+dotenv.workspace = true
+tokio.workspace = true
+log.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+jsonwebtoken.workspace = true
+
+domain = { path = "../domain/"}
+
+[dev-dependencies]
+testcontainers.workspace = true
+testcontainers-modules.workspace = true

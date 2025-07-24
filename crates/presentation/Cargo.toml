@@ -1,0 +1,20 @@
+[package]
+name = "presentation"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+actix-web.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+uuid.workspace = true
+log.workspace = true
+
+application = { path = "../application/" }
+
+[dev-dependencies]
+testcontainers.workspace = true
+testcontainers-modules.workspace = true

@@ -1,0 +1,30 @@
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    image: sadaii/gvozd:latest
+    restart: always
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    depends_on:
+      - db
+    read_only: true
+    tmpfs:
+        - /tmp
+
+volumes:
+  db_data:
+
