@@ -82,6 +82,10 @@
    ```
 
 2. Copy `.env.example` to `.env` and set required environment variables.
+   ```sh
+   # Default config
+   mv .env.example .env
+   ```
 
 3. Build and start services (development)
    ```sh
