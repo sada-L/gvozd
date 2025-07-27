@@ -8,6 +8,7 @@ pub struct User {
     pub username: String,
     pub email: Email,
     pub password_hash: PasswordHash,
+    pub secret: Option<String>,
 }
 
 impl User {
@@ -17,6 +18,7 @@ impl User {
             username,
             email: Email::new(email)?,
             password_hash: PasswordHash::new(password)?,
+            secret: None,
         })
     }
 
@@ -25,12 +27,14 @@ impl User {
         username: String,
         email: String,
         password_hash: String,
+        secret: Option<String>,
     ) -> Result<User, UserError> {
         Ok(Self {
             id,
             username,
             email: Email::new(email)?,
             password_hash: PasswordHash::from_hash(password_hash),
+            secret,
         })
     }
 }
@@ -38,10 +42,11 @@ impl User {
 impl Default for User {
     fn default() -> Self {
         Self {
-            id: Uuid::new_v4(),
+            id: Uuid::parse_str("433be039-341f-4ece-beb3-76ab15dda7e5").unwrap(),
             username: "example".to_string(),
             email: Email::default(),
             password_hash: PasswordHash::default(),
+            secret: None,
         }
     }
 }
