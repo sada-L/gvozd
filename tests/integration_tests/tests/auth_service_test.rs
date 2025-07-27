@@ -9,6 +9,7 @@ mod test {
     };
     use mockall::mock;
     use std::sync::Arc;
+    use uuid::Uuid;
 
     mock! {
         UserRepo {}
@@ -16,6 +17,10 @@ mod test {
         #[async_trait]
         impl UserRepository for UserRepo {
             async fn create(&self, user: &User) -> Result<(), UserError>;
+            async fn update(&self, user: &User) -> Result<(), UserError>;
+            async fn delete(&self, id: Uuid) -> Result<(), UserError>;
+            async fn find_by_id(&self, id: uuid::Uuid) -> Option<User>;
+            async fn find_by_email(&self, email: &str) -> Option<User>;
         }
     }
 
